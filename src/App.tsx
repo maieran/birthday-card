@@ -101,6 +101,8 @@ export default function App() {
     };
   }, [screen]);
 
+  const[isLetterDissolving, setIsLetterDissolving] = useState(false);
+
   switch (screen) {
     case 'welcome':
       return (
@@ -185,15 +187,43 @@ export default function App() {
             image={letterImage}
             alt="Закритий святковий лист"
           >
+            {/* The next screen fades in above the current screen */}
+            <img
+              className={
+                isLetterDissolving
+                  ? 'dissolve-layer dissolve-layer--visible'
+                  : 'dissolve-layer'
+              }
+              src={letterRevealImage}
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              onTransitionEnd={(event) => {
+                if (
+                  event.propertyName !== 'opacity' ||
+                  !isLetterDissolving
+                ) {
+                  return;
+                }
+
+                setIsLetterDissolving(false);
+                changeScreen('letterReveal');
+              }}
+            />
+
             <Hotspot
               className="hotspot--envelope"
               label="Відкрити лист"
-              onClick={() => changeScreen('letterReveal')}
+              onClick={() => {
+                if (!isLetterDissolving) {
+                  setIsLetterDissolving(true);
+                }
+              }}
             />
           </ScreenFrame>
         </div>
       );
-
+    
     case 'letterReveal':
       return (
         <div className="app">
