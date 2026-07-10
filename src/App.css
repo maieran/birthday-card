@@ -32,6 +32,7 @@
   height: 100%;
   object-fit: contain;
   user-select: none;
+  image-rendering: auto;
 }
 
 /* Invisible buttons placed over your Figma elements */
