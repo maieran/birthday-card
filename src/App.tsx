@@ -1,4 +1,3 @@
-//import { useState, type ReactNode } from 'react';
 import {
   useEffect,
   useState,
@@ -12,7 +11,7 @@ import flowerImage from './assets/screens/flower.png';
 import letterImage from './assets/screens/letter.png';
 import letterRevealImage from './assets/screens/letter-reveal.png';
 import photoboothImage from './assets/screens/photobooth.png';
-import photoStripImage from './assets/screens/photo-strip.svg';
+import photoStripImage from './assets/screens/photo-strip.png';
 
 import './App.css';
 
